@@ -3,1147 +3,397 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>함께하는길 | 비영리 단체</title>
-  <meta name="description" content="함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 수행하는 비영리 단체입니다." />
-
-  <meta property="og:title" content="함께하는길 | 비영리 단체" />
+  <title>함께하는길 | 지역사회와 함께 걷는 비영리 단체</title>
+  <meta name="description" content="함께하는길은 교육, 돌봄, 긴급지원 사업을 통해 지역사회와 취약계층을 돕는 비영리 단체입니다. 투명한 운영과 지속 가능한 나눔을 실천합니다." />
+  <meta name="theme-color" content="#1f5f4a" />
+  <meta property="og:title" content="함께하는길 | 지역사회와 함께 걷는 비영리 단체" />
   <meta property="og:description" content="작은 나눔이 누군가의 내일을 바꿉니다." />
   <meta property="og:type" content="website" />
 
   <style>
-    :root {
-      --primary: #1f5f4a;
-      --primary-dark: #163f33;
-      --primary-soft: #e8f3ef;
-      --accent: #f2a516;
-      --text: #1f2933;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --bg: #f8faf9;
-      --white: #ffffff;
-      --danger: #b45309;
-      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
-      --radius: 20px;
-      --max: 1180px;
+    :root{
+      --primary:#1f5f4a;
+      --primary-dark:#163f33;
+      --primary-soft:#e7f2ee;
+      --accent:#f2a516;
+      --accent-soft:#fff6e4;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --bg:#f7faf8;
+      --white:#ffffff;
+      --footer:#0f1720;
+      --shadow:0 18px 45px rgba(15,23,42,.08);
+      --shadow-strong:0 28px 64px rgba(15,23,42,.14);
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --radius-md:16px;
+      --max:1180px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR","Segoe UI",sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.65;
+      word-break:keep-all;
+    }
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(100% - 40px, var(--max));margin:0 auto}
+    .skip-link{
+      position:absolute;left:16px;top:-100px;background:#111827;color:#fff;
+      padding:10px 14px;border-radius:12px;z-index:999
+    }
+    .skip-link:focus{top:16px}
+    .section{padding:96px 0}
+    .eyebrow{
+      display:inline-block;margin-bottom:10px;color:var(--primary);
+      font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase
+    }
+    .section-head{
+      display:flex;justify-content:space-between;align-items:flex-end;gap:30px;
+      margin-bottom:38px
+    }
+    .section-head h2,.center-head h2{
+      font-size:clamp(32px,4vw,46px);line-height:1.18;letter-spacing:-.05em;
+      color:#111827
+    }
+    .section-head p,.center-head p{max-width:560px;color:var(--muted)}
+    .center-head{max-width:760px;margin:0 auto 46px;text-align:center}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:48px;padding:13px 20px;border-radius:999px;font-weight:800;
+      border:1px solid transparent;transition:.25s ease;cursor:pointer
+    }
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 12px 28px rgba(31,95,74,.24)}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px)}
+    .btn-outline{background:#fff;color:var(--primary);border-color:rgba(31,95,74,.2)}
+    .btn-outline:hover{background:var(--primary-soft)}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+      font-size:13px;font-weight:800
     }
 
-    html {
-      scroll-behavior: smooth;
+    /* Top bar / header */
+    .topbar{background:var(--primary-dark);color:rgba(255,255,255,.88);font-size:13px}
+    .topbar .container{min-height:40px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+    .topbar-links{display:flex;gap:16px;flex-wrap:wrap}
+    header{
+      position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);
+      backdrop-filter:blur(16px);border-bottom:1px solid rgba(229,231,235,.85)
     }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "Segoe UI", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-      word-break: keep-all;
+    .nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:flex;align-items:center;min-width:200px}
+    .brand picture,.footer-brand picture{display:block}
+    .brand img{width:220px;height:auto}
+    .menu{display:flex;align-items:center;gap:28px;color:var(--primary);font-size:15px;font-weight:800}
+    .menu a{position:relative;padding:28px 0}
+    .menu a::after{
+      content:"";position:absolute;left:0;bottom:22px;width:0;height:2px;
+      background:var(--primary);transition:.25s ease
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    .menu a:hover::after,.menu a:focus-visible::after{width:100%}
+    .menu a:hover,.menu a:focus-visible{color:var(--primary-dark)}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .mobile-toggle{
+      display:none;background:transparent;border:0;font-size:28px;line-height:1;
+      color:var(--primary);cursor:pointer
     }
-
-    img {
-      max-width: 100%;
-      display: block;
+    .mobile-panel{
+      display:none;background:#fff;border-top:1px solid var(--line)
     }
-
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
+    .mobile-panel a{
+      display:block;padding:16px 20px;border-bottom:1px solid var(--line);font-weight:800
     }
-
-    .container {
-      width: min(100% - 40px, var(--max));
-      margin: 0 auto;
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -100px;
-      left: 16px;
-      background: #111827;
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 10px;
-      z-index: 999;
-    }
-
-    .skip-link:focus {
-      top: 16px;
-    }
-
-    /* Top Bar */
-    .top-bar {
-      background: var(--primary-dark);
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 13px;
-    }
-
-    .top-bar .container {
-      height: 38px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .top-links {
-      display: flex;
-      gap: 16px;
-      white-space: nowrap;
-    }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(229, 231, 235, 0.85);
-    }
-
-    .nav {
-      height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-      min-width: 210px;
-    }
-
-    .logo img {
-      width: 215px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .footer-logo img {
-      width: 210px;
-      height: auto;
-      filter: none;
-      opacity: 1;
-      mix-blend-mode: normal;
-    }
-
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .menu a {
-      position: relative;
-      padding: 29px 0;
-    }
-
-    .menu a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 23px;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: 0.25s;
-    }
-
-    .menu a:hover::after,
-    .menu a:focus-visible::after {
-      width: 100%;
-    }
-
-    .menu a:hover,
-    .menu a:focus-visible {
-      color: var(--primary-dark);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 20px;
-      border-radius: 999px;
-      font-size: 15px;
-      font-weight: 800;
-      border: 1px solid transparent;
-      transition: 0.25s;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 12px 26px rgba(31, 95, 74, 0.22);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: white;
-      color: var(--primary);
-      border-color: rgba(31, 95, 74, 0.22);
-    }
-
-    .btn-outline:hover {
-      background: var(--primary-soft);
-    }
-
-    .mobile-toggle {
-      display: none;
-      border: 0;
-      background: transparent;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    .mobile-panel {
-      display: none;
-      border-top: 1px solid var(--line);
-      background: white;
-    }
-
-    .mobile-panel a {
-      display: block;
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--line);
-      font-weight: 800;
-    }
-
-    body.menu-open .mobile-panel {
-      display: block;
-    }
+    body.menu-open .mobile-panel{display:block}
 
     /* Hero */
-    .hero {
-      position: relative;
-      overflow: hidden;
+    .hero{
+      position:relative;overflow:hidden;color:#fff;
       background:
-        linear-gradient(90deg, rgba(22, 63, 51, 0.91), rgba(22, 63, 51, 0.62)),
+        linear-gradient(90deg, rgba(22,63,51,.92), rgba(22,63,51,.65)),
         url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1800&q=80");
-      background-size: cover;
-      background-position: center;
-      color: white;
+      background-size:cover;background-position:center
     }
-
-    .hero .container {
-      min-height: 640px;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 50px;
-      padding: 86px 0;
+    .hero .container{
+      min-height:660px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;
+      gap:50px;padding:88px 0
     }
-
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 22px;
+    .hero-badge{
+      background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#fff
     }
-
-    .hero h1 {
-      font-size: clamp(42px, 6vw, 68px);
-      line-height: 1.08;
-      letter-spacing: -0.06em;
-      margin-bottom: 24px;
+    .hero h1{
+      margin:20px 0 22px;font-size:clamp(42px,6vw,68px);
+      line-height:1.08;letter-spacing:-.06em
     }
-
-    .hero p {
-      font-size: 19px;
-      color: rgba(255, 255, 255, 0.88);
-      max-width: 620px;
-      margin-bottom: 32px;
+    .hero p{
+      max-width:620px;font-size:19px;color:rgba(255,255,255,.88);margin-bottom:30px
     }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 36px;
+    .hero-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+    .hero-buttons .btn-outline{
+      background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff
     }
-
-    .hero-buttons .btn-outline {
-      background: rgba(255, 255, 255, 0.12);
-      color: white;
-      border-color: rgba(255, 255, 255, 0.32);
+    .hero-meta{display:flex;flex-wrap:wrap;gap:18px;color:rgba(255,255,255,.86);font-size:14px}
+    .hero-card{
+      background:rgba(255,255,255,.97);color:var(--text);border-radius:var(--radius-xl);
+      padding:28px;box-shadow:var(--shadow-strong)
     }
-
-    .hero-mini {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 14px;
+    .hero-card h3{font-size:24px;letter-spacing:-.04em;margin-bottom:10px}
+    .hero-card p{color:var(--muted);font-size:15px;margin-bottom:20px}
+    .amount-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+    .amount{
+      display:block;padding:15px 14px;border-radius:16px;border:1px solid var(--line);
+      background:#fff;text-align:center;font-weight:900;color:var(--text);transition:.2s
     }
-
-    .hero-mini strong {
-      color: white;
-    }
-
-    .donation-card {
-      background: rgba(255, 255, 255, 0.97);
-      color: var(--text);
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.24);
-    }
-
-    .donation-card h3 {
-      font-size: 24px;
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
-    }
-
-    .donation-card p {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 22px;
-    }
-
-    .amounts {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .amount {
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: #fff;
-      text-align: center;
-      font-weight: 900;
-      transition: 0.25s;
-    }
-
-    .amount:hover,
-    .amount.active {
-      border-color: var(--primary);
-      background: var(--primary-soft);
-      color: var(--primary);
-    }
-
-    .donation-card .btn {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    .trust-box {
-      margin-top: 18px;
-      display: flex;
-      gap: 10px;
-      padding: 14px;
-      border-radius: 16px;
-      background: #f9fafb;
-      color: #4b5563;
-      font-size: 13px;
-    }
-
-    /* Common section */
-    section {
-      padding: 96px 0;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 38px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      color: var(--primary);
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .section-head h2,
-    .center-head h2 {
-      font-size: clamp(32px, 4vw, 46px);
-      line-height: 1.18;
-      letter-spacing: -0.055em;
-      color: #111827;
-    }
-
-    .section-head p,
-    .center-head p {
-      color: var(--muted);
-      max-width: 520px;
-    }
-
-    .center-head {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 46px;
+    .amount:hover,.amount.active{border-color:var(--primary);background:var(--primary-soft);color:var(--primary)}
+    .hero-card .btn{width:100%}
+    .trust{
+      display:flex;gap:10px;margin-top:16px;padding:14px;border-radius:16px;
+      background:#f9fafb;color:#4b5563;font-size:13px
     }
 
     /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 44px;
-      align-items: center;
-    }
-
-    .about-image {
-      border-radius: 30px;
-      overflow: hidden;
-      min-height: 460px;
+    .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:center}
+    .about-image{
+      min-height:470px;border-radius:30px;overflow:hidden;box-shadow:var(--shadow);
       background:
-        linear-gradient(rgba(31, 95, 74, 0.08), rgba(31, 95, 74, 0.08)),
+        linear-gradient(rgba(31,95,74,.08),rgba(31,95,74,.08)),
         url("https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
+      background-size:cover;background-position:center
     }
+    .about-content h2{font-size:clamp(32px,4vw,48px);line-height:1.18;letter-spacing:-.055em;margin-bottom:20px}
+    .about-content p{font-size:17px;color:var(--muted);margin-bottom:24px}
+    .feature-list{display:grid;gap:14px}
+    .feature{
+      display:flex;gap:12px;padding:16px;border-radius:18px;background:#fff;border:1px solid var(--line)
+    }
+    .feature-icon{
+      width:28px;height:28px;flex-shrink:0;border-radius:50%;
+      display:grid;place-items:center;background:var(--primary-soft);color:var(--primary);font-weight:900
+    }
+    .feature strong{display:block;margin-bottom:4px}
+    .feature span{font-size:14px;color:var(--muted)}
 
-    .about-content h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.18;
-      letter-spacing: -0.055em;
-      margin-bottom: 22px;
+    /* Stats */
+    .stats-wrap{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:40px 42px;
+      background:var(--primary-dark);color:#fff;border-radius:32px;box-shadow:var(--shadow)
     }
-
-    .about-content p {
-      color: var(--muted);
-      font-size: 17px;
-      margin-bottom: 24px;
+    .stat strong{
+      display:block;font-size:clamp(32px,4vw,48px);line-height:1;letter-spacing:-.04em;margin-bottom:10px
     }
-
-    .check-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 24px;
-    }
-
-    .check {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 16px;
-      border-radius: 18px;
-      background: white;
-      border: 1px solid var(--line);
-    }
-
-    .check-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--primary-soft);
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-
-    .check strong {
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    .check span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Stats band */
-    .stats-band {
-      padding: 0;
-    }
-
-    .stats-wrap {
-      background: var(--primary-dark);
-      color: white;
-      border-radius: 32px;
-      padding: 42px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .stat-item strong {
-      display: block;
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
-    }
-
-    .stat-item span {
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 15px;
-    }
+    .stat span{color:rgba(255,255,255,.75);font-size:15px}
 
     /* Programs */
-    .programs {
-      background: white;
+    .programs{background:#fff}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;
+      box-shadow:0 12px 35px rgba(15,23,42,.05);transition:.25s
     }
-
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+    .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .card-thumb{height:210px;background-size:cover;background-position:center}
+    .thumb-1{background-image:url("https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=900&q=80")}
+    .thumb-2{background-image:url("https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=900&q=80")}
+    .thumb-3{background-image:url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80")}
+    .card-body{padding:24px}
+    .label{
+      display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--primary-soft);
+      color:var(--primary);font-size:12px;font-weight:900;margin-bottom:14px
     }
-
-    .program-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      overflow: hidden;
-      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05);
-      transition: 0.25s;
-    }
-
-    .program-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-    }
-
-    .program-thumb {
-      height: 210px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .thumb-1 {
-      background-image: url("https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=900&q=80");
-    }
-
-    .thumb-2 {
-      background-image: url("https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=900&q=80");
-    }
-
-    .thumb-3 {
-      background-image: url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80");
-    }
-
-    .program-body {
-      padding: 24px;
-    }
-
-    .program-body .label {
-      display: inline-flex;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--primary-soft);
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: 900;
-      margin-bottom: 14px;
-    }
-
-    .program-body h3 {
-      font-size: 22px;
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
-    }
-
-    .program-body p {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 18px;
-    }
-
-    .read-more {
-      color: var(--primary);
-      font-weight: 900;
-      font-size: 14px;
-    }
+    .card-body h3{font-size:22px;letter-spacing:-.04em;margin-bottom:10px}
+    .card-body p{font-size:15px;color:var(--muted);margin-bottom:18px}
+    .link-arrow{color:var(--primary);font-weight:900;font-size:14px}
 
     /* Impact */
-    .impact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
+    .impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .impact-main{
+      min-height:385px;display:flex;flex-direction:column;justify-content:space-between;
+      padding:38px;border-radius:30px;background:var(--primary);color:#fff;box-shadow:var(--shadow)
     }
-
-    .impact-main {
-      background: var(--primary);
-      color: white;
-      border-radius: 30px;
-      padding: 38px;
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow);
+    .impact-main h3{font-size:34px;line-height:1.2;letter-spacing:-.05em;margin-bottom:16px}
+    .impact-main p{color:rgba(255,255,255,.84)}
+    .impact-list{display:grid;gap:16px}
+    .impact-item{
+      display:flex;gap:18px;padding:24px;border-radius:24px;background:#fff;border:1px solid var(--line)
     }
-
-    .impact-main h3 {
-      font-size: 34px;
-      line-height: 1.2;
-      letter-spacing: -0.05em;
-      margin-bottom: 16px;
+    .impact-no{
+      width:52px;height:52px;flex-shrink:0;border-radius:18px;display:grid;place-items:center;
+      background:var(--primary-soft);color:var(--primary);font-weight:900
     }
-
-    .impact-main p {
-      color: rgba(255, 255, 255, 0.82);
-    }
-
-    .impact-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .impact-item {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      display: flex;
-      gap: 18px;
-      align-items: flex-start;
-    }
-
-    .impact-number {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      background: var(--primary-soft);
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-
-    .impact-item h4 {
-      font-size: 19px;
-      margin-bottom: 5px;
-      letter-spacing: -0.03em;
-    }
-
-    .impact-item p {
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .impact-item h4{font-size:19px;letter-spacing:-.03em;margin-bottom:6px}
+    .impact-item p{font-size:14px;color:var(--muted)}
 
     /* Transparency */
-    .transparency {
-      background: #fff;
+    .transparency{background:#fff}
+    .mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .mini-card{
+      padding:24px;border-radius:24px;background:#fff;border:1px solid var(--line);
+      box-shadow:0 10px 28px rgba(15,23,42,.04)
     }
-
-    .transparency-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .transparency-card {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      background: #fff;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
-    }
-
-    .transparency-card h3 {
-      font-size: 21px;
-      letter-spacing: -0.04em;
-      margin-bottom: 8px;
-    }
-
-    .transparency-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .mini-card h3{font-size:21px;letter-spacing:-.04em;margin-bottom:8px}
+    .mini-card p{font-size:14px;color:var(--muted)}
 
     /* News */
-    .news {
-      background: var(--bg);
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-    }
-
-    .featured-news {
-      border-radius: 30px;
-      overflow: hidden;
-      background: #111827;
-      color: white;
-      position: relative;
-      min-height: 460px;
-      display: flex;
-      align-items: end;
-      padding: 34px;
-      background:
-        linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.15)),
+    .news-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:24px}
+    .featured-news{
+      min-height:470px;display:flex;align-items:flex-end;padding:34px;border-radius:30px;overflow:hidden;
+      color:#fff;background:
+        linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.15)),
         url("https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80");
-      background-size: cover;
-      background-position: center;
+      background-size:cover;background-position:center
     }
-
-    .featured-news .date,
-    .news-item .date {
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 900;
-      margin-bottom: 10px;
+    .date{font-size:13px;color:var(--accent);font-weight:900;margin-bottom:10px}
+    .featured-news h3{font-size:30px;line-height:1.24;letter-spacing:-.045em;margin-bottom:12px}
+    .featured-news p{color:rgba(255,255,255,.84)}
+    .news-list{display:grid;gap:14px}
+    .news-item{
+      padding:22px;border-radius:22px;border:1px solid var(--line);background:#fff;transition:.25s
     }
+    .news-item:hover{transform:translateX(4px);border-color:rgba(31,95,74,.28)}
+    .news-item h4{font-size:19px;letter-spacing:-.035em;margin-bottom:8px}
+    .news-item p{font-size:14px;color:var(--muted)}
 
-    .featured-news h3 {
-      font-size: 30px;
-      line-height: 1.24;
-      letter-spacing: -0.045em;
-      margin-bottom: 12px;
+    /* FAQ */
+    .faq-grid{display:grid;gap:14px;max-width:860px;margin:0 auto}
+    .faq-item{
+      background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden
     }
-
-    .featured-news p {
-      color: rgba(255, 255, 255, 0.82);
+    .faq-question{
+      width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;
+      padding:20px 22px;background:#fff;border:0;text-align:left;font-weight:800;color:#111827;cursor:pointer
     }
-
-    .news-list {
-      display: grid;
-      gap: 14px;
+    .faq-question span:last-child{color:var(--primary);font-size:20px;line-height:1}
+    .faq-answer{
+      display:none;padding:0 22px 20px;color:var(--muted);font-size:15px
     }
+    .faq-item.open .faq-answer{display:block}
+    .faq-item.open .faq-question{color:var(--primary)}
 
-    .news-item {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px;
-      transition: 0.25s;
-    }
-
-    .news-item:hover {
-      border-color: rgba(31, 95, 74, 0.3);
-      transform: translateX(4px);
-    }
-
-    .news-item h4 {
-      font-size: 19px;
-      letter-spacing: -0.035em;
-      margin-bottom: 8px;
-    }
-
-    .news-item p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Donation */
-    .donation-section {
-      background:
-        linear-gradient(90deg, rgba(31, 95, 74, 0.94), rgba(31, 95, 74, 0.82)),
+    /* CTA / donate */
+    .cta-band{
+      padding:72px 0;background:
+        linear-gradient(90deg, rgba(31,95,74,.94), rgba(31,95,74,.82)),
         url("https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
-      color: white;
+      background-size:cover;background-position:center;color:#fff
     }
-
-    .donation-box {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 42px;
-      align-items: center;
+    .cta-box{display:grid;grid-template-columns:1fr .9fr;gap:40px;align-items:center}
+    .cta-text h2{
+      font-size:clamp(36px,5vw,56px);line-height:1.15;letter-spacing:-.06em;margin-bottom:18px
     }
-
-    .donation-text h2 {
-      font-size: clamp(36px, 5vw, 56px);
-      line-height: 1.15;
-      letter-spacing: -0.06em;
-      margin-bottom: 20px;
+    .cta-text p{max-width:600px;color:rgba(255,255,255,.84);font-size:18px}
+    .bank-card{
+      padding:32px;border-radius:30px;background:rgba(255,255,255,.97);color:var(--text)
     }
-
-    .donation-text p {
-      color: rgba(255, 255, 255, 0.84);
-      font-size: 18px;
-      max-width: 600px;
+    .bank-card h3{font-size:25px;letter-spacing:-.04em;margin-bottom:18px}
+    .bank-box{
+      margin-bottom:14px;padding:18px;border-radius:18px;background:#f9fafb;border:1px solid var(--line)
     }
-
-    .donation-method {
-      background: rgba(255, 255, 255, 0.97);
-      color: var(--text);
-      border-radius: 30px;
-      padding: 32px;
+    .bank-box span{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+    .bank-box strong{display:block;font-size:20px;letter-spacing:-.02em}
+    .notice{
+      margin-top:14px;padding:14px;border-radius:16px;background:#fff7ed;border:1px solid #fed7aa;
+      color:#9a3412;font-size:13px
     }
-
-    .donation-method h3 {
-      font-size: 25px;
-      letter-spacing: -0.04em;
-      margin-bottom: 18px;
-    }
-
-    .bank-box {
-      background: #f9fafb;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 16px;
-    }
-
-    .bank-box span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 4px;
-    }
-
-    .bank-box strong {
-      display: block;
-      font-size: 20px;
-      letter-spacing: -0.02em;
-    }
-
-    .donation-method small {
-      display: block;
-      color: var(--muted);
-      margin-top: 14px;
-      line-height: 1.5;
-    }
-
-    .notice {
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 16px;
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      color: #9a3412;
-      font-size: 13px;
-    }
+    .bank-card small{display:block;margin-top:12px;color:var(--muted);line-height:1.55}
 
     /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 28px;
+    .contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:28px}
+    .contact-panel,.form-panel{
+      background:#fff;border:1px solid var(--line);border-radius:30px;padding:34px;
+      box-shadow:0 12px 35px rgba(15,23,42,.04)
     }
-
-    .contact-info {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 34px;
-      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04);
+    .contact-panel h3{font-size:28px;letter-spacing:-.045em;margin-bottom:18px}
+    .contact-panel p{color:var(--muted)}
+    .info-list{display:grid;gap:16px;margin-top:24px}
+    .info-row{display:flex;gap:14px;align-items:flex-start;color:var(--muted)}
+    .info-row strong{display:block;color:var(--text);margin-bottom:2px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{margin-bottom:14px}
+    .field.full{grid-column:1 / -1}
+    .field label{display:block;font-size:14px;font-weight:800;color:#374151;margin-bottom:8px}
+    .field input,.field select,.field textarea{
+      width:100%;padding:14px 15px;border-radius:14px;border:1px solid var(--line);
+      background:#fff;outline:none;transition:.2s
     }
-
-    .contact-info h3 {
-      font-size: 28px;
-      letter-spacing: -0.045em;
-      margin-bottom: 18px;
+    .field input:focus,.field select:focus,.field textarea:focus{
+      border-color:var(--primary);box-shadow:0 0 0 4px rgba(31,95,74,.09)
     }
-
-    .info-list {
-      display: grid;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .info-row {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      color: var(--muted);
-    }
-
-    .info-row strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-
-    .form {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 34px;
-      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .field {
-      margin-bottom: 14px;
-    }
-
-    .field label {
-      display: block;
-      font-size: 14px;
-      font-weight: 800;
-      margin-bottom: 8px;
-      color: #374151;
-    }
-
-    .field input,
-    .field textarea,
-    .field select {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px 15px;
-      background: #fff;
-      outline: none;
-      transition: 0.2s;
-    }
-
-    .field input:focus,
-    .field textarea:focus,
-    .field select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(31, 95, 74, 0.09);
-    }
-
-    .field textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .full {
-      grid-column: 1 / -1;
-    }
+    .field textarea{min-height:140px;resize:vertical}
+    .form-note{margin-top:10px;color:var(--muted);font-size:13px}
 
     /* Footer */
-    footer {
-      background: #111827;
-      color: rgba(255, 255, 255, 0.75);
-      padding: 58px 0 26px;
+    footer{padding:58px 0 26px;background:var(--footer);color:rgba(255,255,255,.76)}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr 1fr;gap:34px;margin-bottom:36px}
+    .footer-brand{margin-bottom:16px}
+    .footer-brand img{width:210px;height:auto}
+    footer h4{color:#fff;font-size:16px;margin-bottom:14px}
+    .footer-links{display:grid;gap:9px;font-size:14px}
+    .footer-desc{max-width:320px;font-size:14px}
+    .copyright{
+      display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+      padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr;
-      gap: 34px;
-      margin-bottom: 36px;
+    /* Floating CTA */
+    .floating-donate{
+      display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:90
+    }
+    .floating-donate .btn{
+      width:100%;box-shadow:0 18px 36px rgba(31,95,74,.28)
     }
 
-    .footer-logo {
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-start;
-      margin-bottom: 16px;
-      padding: 0;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
+    @media (max-width: 980px){
+      .topbar{display:none}
+      .menu,.nav-actions{display:none}
+      .mobile-toggle{display:block}
+      .hero .container,.about-grid,.impact-grid,.news-grid,.cta-box,.contact-grid{grid-template-columns:1fr}
+      .card-grid,.mini-grid{grid-template-columns:1fr}
+      .stats-wrap{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .section-head{flex-direction:column;align-items:flex-start}
+      .hero .container{min-height:auto;padding:76px 0}
+      .floating-donate{display:block}
+      body{padding-bottom:84px}
     }
-
-    footer h4 {
-      color: white;
-      margin-bottom: 14px;
-      font-size: 16px;
-    }
-
-    .footer-links {
-      display: grid;
-      gap: 9px;
-      font-size: 14px;
-    }
-
-    .footer-desc {
-      font-size: 14px;
-      max-width: 320px;
-    }
-
-    .copyright {
-      padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 13px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 1080px) {
-      .menu {
-        gap: 20px;
-      }
-
-      .logo img {
-        width: 190px;
-      }
-    }
-
-    @media (max-width: 960px) {
-      .top-bar {
-        display: none;
-      }
-
-      .menu,
-      .nav-actions {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: block;
-      }
-
-      .hero .container,
-      .about-grid,
-      .donation-box,
-      .contact-grid,
-      .news-grid,
-      .impact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero .container {
-        min-height: auto;
-        padding: 72px 0;
-      }
-
-      .donation-card {
-        max-width: 520px;
-      }
-
-      .program-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-wrap {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .transparency-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .section-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .container {
-        width: min(100% - 28px, var(--max));
-      }
-
-      .nav {
-        height: 70px;
-      }
-
-      .logo {
-        min-width: auto;
-      }
-
-      .logo img {
-        width: 172px;
-      }
-
-      .hero h1 {
-        font-size: 40px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 72px 0;
-      }
-
-      .stats-wrap {
-        grid-template-columns: 1fr;
-        border-radius: 24px;
-        padding: 30px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .copyright {
-        flex-direction: column;
-      }
-
-      .amounts {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-logo img {
-        width: 190px;
-      }
-
-      .footer-logo {
-        padding: 0;
-        border-radius: 0;
-      }
+    @media (max-width: 680px){
+      .container{width:min(100% - 28px, var(--max))}
+      .nav{min-height:72px}
+      .brand img{width:180px}
+      .hero h1{font-size:40px}
+      .hero p,.cta-text p{font-size:16px}
+      .section{padding:76px 0}
+      .amount-grid,.form-grid,.stats-wrap,.footer-grid{grid-template-columns:1fr}
+      .footer-brand img{width:190px}
+      .copyright{flex-direction:column}
     }
   </style>
 </head>
-
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
 
-  <div class="top-bar">
+  <div class="topbar">
     <div class="container">
       <div>투명한 운영과 지속 가능한 나눔을 실천하는 비영리 단체</div>
-      <div class="top-links">
-        <a href="#contact">문의하기</a>
-        <a href="#donate">후원안내</a>
+      <div class="topbar-links">
         <a href="#transparency">투명경영</a>
+        <a href="#donate">후원안내</a>
+        <a href="#contact">문의하기</a>
       </div>
     </div>
   </div>
 
   <header>
     <div class="container nav">
-      <a href="#" class="logo" aria-label="함께하는길 홈">
-        <img src="path_of_unity_logo_transparent.png" alt="함께하는길 Nonprofit Organization 로고" />
+      <a href="#" class="brand" aria-label="함께하는길 홈">
+        <picture>
+          <source srcset="path_of_unity_logo_optimized.webp" type="image/webp" />
+          <img src="path_of_unity_logo_optimized.png" alt="함께하는길 로고" />
+        </picture>
       </a>
 
       <nav class="menu" aria-label="주요 메뉴">
@@ -1151,6 +401,7 @@
         <a href="#programs">주요사업</a>
         <a href="#impact">활동성과</a>
         <a href="#news">소식</a>
+        <a href="#faq">자주 묻는 질문</a>
         <a href="#contact">문의</a>
       </nav>
 
@@ -1159,16 +410,17 @@
         <a href="#donate" class="btn btn-primary">후원하기</a>
       </div>
 
-      <button class="mobile-toggle" type="button" aria-label="모바일 메뉴 열기" onclick="document.body.classList.toggle('menu-open')">☰</button>
+      <button class="mobile-toggle" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false" onclick="toggleMenu(this)">☰</button>
     </div>
 
     <nav class="mobile-panel" aria-label="모바일 메뉴">
-      <a href="#about" onclick="document.body.classList.remove('menu-open')">단체소개</a>
-      <a href="#programs" onclick="document.body.classList.remove('menu-open')">주요사업</a>
-      <a href="#impact" onclick="document.body.classList.remove('menu-open')">활동성과</a>
-      <a href="#news" onclick="document.body.classList.remove('menu-open')">소식</a>
-      <a href="#donate" onclick="document.body.classList.remove('menu-open')">후원하기</a>
-      <a href="#contact" onclick="document.body.classList.remove('menu-open')">문의</a>
+      <a href="#about" onclick="closeMenu()">단체소개</a>
+      <a href="#programs" onclick="closeMenu()">주요사업</a>
+      <a href="#impact" onclick="closeMenu()">활동성과</a>
+      <a href="#news" onclick="closeMenu()">소식</a>
+      <a href="#faq" onclick="closeMenu()">자주 묻는 질문</a>
+      <a href="#donate" onclick="closeMenu()">후원하기</a>
+      <a href="#contact" onclick="closeMenu()">문의</a>
     </nav>
   </header>
 
@@ -1176,12 +428,8 @@
     <section class="hero">
       <div class="container">
         <div>
-          <div class="hero-kicker">지역사회와 함께 걷는 비영리 단체</div>
-          <h1>
-            작은 나눔이<br />
-            누군가의 내일을<br />
-            바꿉니다
-          </h1>
+          <div class="badge hero-badge">지역사회와 함께 걷는 비영리 단체</div>
+          <h1>작은 나눔이<br />누군가의 내일을<br />바꿉니다</h1>
           <p>
             함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 통해
             모두가 존중받는 사회를 만들어갑니다.
@@ -1192,38 +440,34 @@
             <a href="#about" class="btn btn-outline">단체소개</a>
           </div>
 
-          <div class="hero-mini">
+          <div class="hero-meta">
             <div><strong>설립 2015</strong> · 지역사회 기반 활동</div>
-            <div><strong>투명한 후원금</strong> · 정기 보고</div>
+            <div><strong>정기 보고</strong> · 후원금 사용 내역 공개</div>
           </div>
         </div>
 
-        <aside class="donation-card" aria-label="정기후원 안내">
+        <aside class="hero-card" aria-label="정기후원 안내">
           <h3>정기후원으로 함께해주세요</h3>
-          <p>
-            매월의 작은 후원이 아이들의 식사, 교육, 긴급 생계 지원으로 이어집니다.
-          </p>
+          <p>매월의 작은 후원이 아이들의 식사, 교육, 긴급 생계 지원으로 이어집니다.</p>
 
-          <div class="amounts">
-            <a href="#donate" class="amount active">10,000원</a>
-            <a href="#donate" class="amount">30,000원</a>
-            <a href="#donate" class="amount">50,000원</a>
-            <a href="#donate" class="amount">직접 입력</a>
+          <div class="amount-grid">
+            <a class="amount active" href="#donate">10,000원</a>
+            <a class="amount" href="#donate">30,000원</a>
+            <a class="amount" href="#donate">50,000원</a>
+            <a class="amount" href="#donate">직접 입력</a>
           </div>
 
           <a href="#donate" class="btn btn-primary">후원 신청하기</a>
 
-          <div class="trust-box">
+          <div class="trust">
             <span>🔒</span>
-            <span>
-              후원금은 목적사업에 맞게 사용되며, 활동보고와 결산자료를 정기적으로 공개합니다.
-            </span>
+            <span>후원금은 목적사업에 맞게 사용되며, 활동보고와 결산자료를 정기적으로 공개합니다.</span>
           </div>
         </aside>
       </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="section">
       <div class="container about-grid">
         <div class="about-image" role="img" aria-label="봉사자와 이웃이 함께하는 모습"></div>
 
@@ -1231,30 +475,30 @@
           <span class="eyebrow">About Us</span>
           <h2>도움이 필요한 곳에 가장 먼저 다가가는 단체</h2>
           <p>
-            함께하는길은 지역사회 안에서 소외된 이웃을 발견하고, 실제적인 도움을 연결하는
-            비영리 단체입니다. 단순한 일회성 지원을 넘어, 삶이 회복될 수 있도록 지속적인
-            관계와 프로그램을 만들어갑니다.
+            함께하는길은 지역사회 안에서 소외된 이웃을 발견하고 실제적인 도움을 연결하는
+            비영리 단체입니다. 단순한 일회성 지원을 넘어 삶이 회복될 수 있도록
+            지속적인 관계와 프로그램을 만들어갑니다.
           </p>
 
-          <div class="check-list">
-            <div class="check">
-              <div class="check-icon">✓</div>
+          <div class="feature-list">
+            <div class="feature">
+              <div class="feature-icon">✓</div>
               <div>
                 <strong>투명한 운영</strong>
                 <span>후원금 사용 내역과 사업 결과를 정기적으로 공개합니다.</span>
               </div>
             </div>
 
-            <div class="check">
-              <div class="check-icon">✓</div>
+            <div class="feature">
+              <div class="feature-icon">✓</div>
               <div>
                 <strong>현장 중심 사업</strong>
                 <span>실제 필요한 곳을 직접 확인하고 가장 필요한 지원을 연결합니다.</span>
               </div>
             </div>
 
-            <div class="check">
-              <div class="check-icon">✓</div>
+            <div class="feature">
+              <div class="feature-icon">✓</div>
               <div>
                 <strong>지속 가능한 변화</strong>
                 <span>긴급지원 이후에도 교육, 상담, 자립 프로그램을 이어갑니다.</span>
@@ -1265,22 +509,22 @@
       </div>
     </section>
 
-    <section class="stats-band" aria-label="활동 통계">
+    <section class="section" aria-label="활동 통계" style="padding-top:0">
       <div class="container">
         <div class="stats-wrap">
-          <div class="stat-item">
+          <div class="stat">
             <strong>12,480</strong>
             <span>누적 지원 인원</span>
           </div>
-          <div class="stat-item">
+          <div class="stat">
             <strong>186</strong>
             <span>진행한 프로젝트</span>
           </div>
-          <div class="stat-item">
+          <div class="stat">
             <strong>42</strong>
             <span>협력 기관</span>
           </div>
-          <div class="stat-item">
+          <div class="stat">
             <strong>98%</strong>
             <span>후원자 만족도</span>
           </div>
@@ -1288,7 +532,7 @@
       </div>
     </section>
 
-    <section id="programs" class="programs">
+    <section id="programs" class="section programs">
       <div class="container">
         <div class="section-head">
           <div>
@@ -1301,47 +545,41 @@
           </p>
         </div>
 
-        <div class="program-grid">
-          <article class="program-card">
-            <div class="program-thumb thumb-1"></div>
-            <div class="program-body">
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-thumb thumb-1"></div>
+            <div class="card-body">
               <span class="label">교육지원</span>
               <h3>아동·청소년 배움 지원</h3>
-              <p>
-                학습 멘토링, 장학금, 진로 상담을 통해 아이들이 자신의 가능성을 발견하도록 돕습니다.
-              </p>
-              <a href="#contact" class="read-more">문의하기 →</a>
+              <p>학습 멘토링, 장학금, 진로 상담을 통해 아이들이 자신의 가능성을 발견하도록 돕습니다.</p>
+              <a href="#contact" class="link-arrow">문의하기 →</a>
             </div>
           </article>
 
-          <article class="program-card">
-            <div class="program-thumb thumb-2"></div>
-            <div class="program-body">
+          <article class="card">
+            <div class="card-thumb thumb-2"></div>
+            <div class="card-body">
               <span class="label">돌봄사업</span>
               <h3>취약계층 생활 돌봄</h3>
-              <p>
-                독거 어르신, 한부모 가정, 장애인 가정에 식료품과 생활 지원을 제공합니다.
-              </p>
-              <a href="#contact" class="read-more">문의하기 →</a>
+              <p>독거 어르신, 한부모 가정, 장애인 가정에 식료품과 생활 지원을 제공합니다.</p>
+              <a href="#contact" class="link-arrow">문의하기 →</a>
             </div>
           </article>
 
-          <article class="program-card">
-            <div class="program-thumb thumb-3"></div>
-            <div class="program-body">
+          <article class="card">
+            <div class="card-thumb thumb-3"></div>
+            <div class="card-body">
               <span class="label">긴급지원</span>
               <h3>위기 가정 긴급 구호</h3>
-              <p>
-                갑작스러운 질병, 실직, 재난 상황에 놓인 가정에 긴급 생계비와 물품을 지원합니다.
-              </p>
-              <a href="#contact" class="read-more">문의하기 →</a>
+              <p>갑작스러운 질병, 실직, 재난 상황에 놓인 가정에 긴급 생계비와 물품을 지원합니다.</p>
+              <a href="#contact" class="link-arrow">문의하기 →</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="impact">
+    <section id="impact" class="section">
       <div class="container">
         <div class="center-head">
           <span class="eyebrow">Impact</span>
@@ -1356,17 +594,14 @@
           <div class="impact-main">
             <div>
               <h3>지난 한 해, 3,200명의 이웃에게 도움을 전했습니다.</h3>
-              <p>
-                후원자와 봉사자의 참여로 식료품 지원, 교육비 지원, 심리 상담,
-                주거 환경 개선 사업을 진행했습니다.
-              </p>
+              <p>후원자와 봉사자의 참여로 식료품 지원, 교육비 지원, 심리 상담, 주거 환경 개선 사업을 진행했습니다.</p>
             </div>
             <a href="#transparency" class="btn btn-outline">운영 원칙 보기</a>
           </div>
 
           <div class="impact-list">
             <div class="impact-item">
-              <div class="impact-number">01</div>
+              <div class="impact-no">01</div>
               <div>
                 <h4>아동 교육비 지원</h4>
                 <p>경제적 어려움으로 학습이 중단되지 않도록 장학금과 교재를 지원했습니다.</p>
@@ -1374,7 +609,7 @@
             </div>
 
             <div class="impact-item">
-              <div class="impact-number">02</div>
+              <div class="impact-no">02</div>
               <div>
                 <h4>긴급 생계 지원</h4>
                 <p>위기 상황에 놓인 가정에 식료품, 의료비, 생활비를 신속히 연결했습니다.</p>
@@ -1382,7 +617,7 @@
             </div>
 
             <div class="impact-item">
-              <div class="impact-number">03</div>
+              <div class="impact-no">03</div>
               <div>
                 <h4>지역 봉사 네트워크</h4>
                 <p>자원봉사자와 협력기관을 연결하여 지속 가능한 돌봄 체계를 구축했습니다.</p>
@@ -1393,7 +628,7 @@
       </div>
     </section>
 
-    <section id="transparency" class="transparency">
+    <section id="transparency" class="section transparency">
       <div class="container">
         <div class="section-head">
           <div>
@@ -1406,24 +641,24 @@
           </p>
         </div>
 
-        <div class="transparency-grid">
-          <div class="transparency-card">
+        <div class="mini-grid">
+          <article class="mini-card">
             <h3>후원금 사용 보고</h3>
             <p>사업별 사용 내역과 결과를 정기적으로 정리해 공개합니다.</p>
-          </div>
-          <div class="transparency-card">
+          </article>
+          <article class="mini-card">
             <h3>기부금 영수증 안내</h3>
             <p>후원자 요청 시 기부금 영수증 발급 절차를 안내합니다.</p>
-          </div>
-          <div class="transparency-card">
+          </article>
+          <article class="mini-card">
             <h3>개인정보 보호</h3>
             <p>문의 및 후원 과정에서 수집된 정보는 목적 외로 사용하지 않습니다.</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="news" class="news">
+    <section id="news" class="section">
       <div class="container">
         <div class="section-head">
           <div>
@@ -1438,9 +673,7 @@
             <div>
               <div class="date">2026.05.10</div>
               <h3>가정의 달 맞이 지역 아동 식료품 키트 전달</h3>
-              <p>
-                후원자님의 참여로 지역 아동 150명에게 건강한 식료품 키트와 응원 메시지를 전달했습니다.
-              </p>
+              <p>후원자님의 참여로 지역 아동 150명에게 건강한 식료품 키트와 응원 메시지를 전달했습니다.</p>
             </div>
           </article>
 
@@ -1450,19 +683,16 @@
               <h4>상반기 정기후원자 감사 편지 발송</h4>
               <p>함께해주신 후원자님께 사업 결과와 감사 인사를 전했습니다.</p>
             </article>
-
             <article class="news-item">
               <div class="date">2026.04.15</div>
               <h4>청소년 진로 멘토링 2기 모집</h4>
               <p>지역 청소년을 위한 진로 상담 및 학습 멘토링 프로그램을 시작합니다.</p>
             </article>
-
             <article class="news-item">
               <div class="date">2026.03.30</div>
               <h4>취약계층 주거환경 개선 봉사 진행</h4>
               <p>자원봉사자 34명이 참여해 노후 주거지 정비 활동을 진행했습니다.</p>
             </article>
-
             <article class="news-item">
               <div class="date">2026.03.12</div>
               <h4>2025 연간 기부금 사용 보고 공개</h4>
@@ -1473,10 +703,58 @@
       </div>
     </section>
 
-    <section id="donate" class="donation-section">
-      <div class="container donation-box">
-        <div class="donation-text">
-          <span class="eyebrow" style="color:#f9d494;">Donation</span>
+    <section id="faq" class="section transparency">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>자주 묻는 질문</h2>
+          <p>후원, 기부금 영수증, 자원봉사, 단체 협력에 대해 자주 묻는 질문을 정리했습니다.</p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item open">
+            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+              <span>후원금은 어디에 사용되나요?</span><span>−</span>
+            </button>
+            <div class="faq-answer">
+              교육지원, 생활돌봄, 긴급구호 등 단체의 목적사업에 사용되며, 사업 결과와 사용 내역은 정기적으로 공개합니다.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+              <span>기부금 영수증 발급이 가능한가요?</span><span>+</span>
+            </button>
+            <div class="faq-answer">
+              실제 운영 시 기부금 단체 등록 여부와 발급 기준을 확인한 뒤, 후원자 요청에 따라 안내 문구와 발급 절차를 연결하면 됩니다.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+              <span>자원봉사는 어떻게 신청하나요?</span><span>+</span>
+            </button>
+            <div class="faq-answer">
+              문의하기 폼 또는 대표 연락처를 통해 신청할 수 있으며, 활동 일정과 필요 인원에 맞춰 개별 안내를 받을 수 있습니다.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" onclick="toggleFaq(this)">
+              <span>기업/기관 협력도 가능한가요?</span><span>+</span>
+            </button>
+            <div class="faq-answer">
+              가능합니다. 물품 후원, 캠페인 공동 진행, 봉사 연계 등 다양한 형태의 협력을 문의할 수 있습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate" class="cta-band">
+      <div class="container cta-box">
+        <div class="cta-text">
+          <span class="eyebrow" style="color:#f9d494">Donation</span>
           <h2>당신의 후원이<br />한 사람의 삶을 지킵니다</h2>
           <p>
             후원금은 교육, 생계, 의료, 주거 지원 등 목적사업에 맞게 사용됩니다.
@@ -1484,7 +762,7 @@
           </p>
         </div>
 
-        <div class="donation-method">
+        <aside class="bank-card">
           <h3>후원 계좌 안내</h3>
 
           <div class="bank-box">
@@ -1511,75 +789,53 @@
           <small>
             기부금 영수증 발급이 필요하신 경우 문의 양식에 성함, 연락처, 발급 정보를 남겨주세요.
           </small>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="section">
       <div class="container">
         <div class="center-head">
           <span class="eyebrow">Contact</span>
           <h2>문의하기</h2>
-          <p>
-            후원, 봉사, 협력 제안, 사업 문의를 남겨주시면 담당자가 확인 후 연락드립니다.
-          </p>
+          <p>후원, 봉사, 협력 제안, 사업 문의를 남겨주시면 담당자가 확인 후 연락드립니다.</p>
         </div>
 
         <div class="contact-grid">
-          <div class="contact-info">
+          <aside class="contact-panel">
             <h3>함께하는길 사무국</h3>
-            <p style="color: var(--muted);">
-              도움이 필요한 곳과 도움을 주고 싶은 사람을 연결합니다.
-              궁금한 점이 있다면 언제든 문의해주세요.
-            </p>
+            <p>도움이 필요한 곳과 도움을 주고 싶은 사람을 연결합니다. 궁금한 점이 있다면 언제든 문의해주세요.</p>
 
             <div class="info-list">
               <div class="info-row">
                 <span>📍</span>
-                <div>
-                  <strong>주소</strong>
-                  서울특별시 중구 세종대로 00, 5층
-                </div>
+                <div><strong>주소</strong>서울특별시 중구 세종대로 00, 5층</div>
               </div>
-
               <div class="info-row">
                 <span>📞</span>
-                <div>
-                  <strong>전화</strong>
-                  02-0000-0000
-                </div>
+                <div><strong>전화</strong>02-0000-0000</div>
               </div>
-
               <div class="info-row">
                 <span>✉️</span>
-                <div>
-                  <strong>이메일</strong>
-                  hello@togetherway.org
-                </div>
+                <div><strong>이메일</strong>hello@togetherway.org</div>
               </div>
-
               <div class="info-row">
                 <span>🕘</span>
-                <div>
-                  <strong>운영시간</strong>
-                  평일 09:00 - 18:00
-                </div>
+                <div><strong>운영시간</strong>평일 09:00 - 18:00</div>
               </div>
             </div>
-          </div>
+          </aside>
 
-          <form class="form" onsubmit="event.preventDefault(); alert('샘플 페이지입니다. 실제 운영 시 폼 전송 기능을 연결해야 합니다.');">
+          <form class="form-panel" onsubmit="event.preventDefault(); alert('샘플 페이지입니다. 실제 배포 시 Formspree, Google Forms, Supabase 등으로 폼 전송을 연결하세요.');">
             <div class="form-grid">
               <div class="field">
                 <label for="name">이름</label>
                 <input id="name" type="text" placeholder="홍길동" required />
               </div>
-
               <div class="field">
                 <label for="phone">연락처</label>
                 <input id="phone" type="tel" placeholder="010-0000-0000" required />
               </div>
-
               <div class="field full">
                 <label for="type">문의 유형</label>
                 <select id="type">
@@ -1589,19 +845,13 @@
                   <option>기타 문의</option>
                 </select>
               </div>
-
               <div class="field full">
                 <label for="message">문의 내용</label>
                 <textarea id="message" placeholder="문의 내용을 입력해주세요." required></textarea>
               </div>
-
               <div class="field full">
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                  문의 남기기
-                </button>
-                <p style="margin-top: 10px; color: var(--muted); font-size: 13px;">
-                  현재는 샘플 폼입니다. 실제 배포 시 Google Forms, Formspree, Supabase, Firebase 등으로 연결하세요.
-                </p>
+                <button type="submit" class="btn btn-primary" style="width:100%">문의 남기기</button>
+                <p class="form-note">현재는 샘플 폼입니다. 실제 운영 시 Formspree, Netlify Forms, Supabase, Firebase 등으로 연결하세요.</p>
               </div>
             </div>
           </form>
@@ -1614,12 +864,13 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-logo">
-            <img src="path_of_unity_logo_transparent.png" alt="함께하는길 로고" />
+          <div class="footer-brand">
+            <picture>
+              <source srcset="path_of_unity_logo_optimized.webp" type="image/webp" />
+              <img src="path_of_unity_logo_optimized.png" alt="함께하는길 로고" />
+            </picture>
           </div>
-          <p class="footer-desc">
-            함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 수행하는 비영리 단체입니다.
-          </p>
+          <p class="footer-desc">함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 수행하는 비영리 단체입니다.</p>
         </div>
 
         <div>
@@ -1654,10 +905,42 @@
       </div>
 
       <div class="copyright">
-        <span>© 2026 함께하는길. All rights reserved.</span>
+        <span>© <span id="year"></span> 함께하는길. All rights reserved.</span>
         <span>개인정보처리방침 · 이용약관 · 이메일무단수집거부</span>
       </div>
     </div>
   </footer>
+
+  <div class="floating-donate">
+    <a href="#donate" class="btn btn-primary">후원하기</a>
+  </div>
+
+  <script>
+    function toggleMenu(btn){
+      document.body.classList.toggle('menu-open');
+      const isOpen = document.body.classList.contains('menu-open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+    function closeMenu(){
+      document.body.classList.remove('menu-open');
+      const btn = document.querySelector('.mobile-toggle');
+      if(btn) btn.setAttribute('aria-expanded','false');
+    }
+    function toggleFaq(button){
+      const item = button.closest('.faq-item');
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('open');
+        const icon = el.querySelector('.faq-question span:last-child');
+        if(icon) icon.textContent = '+';
+      });
+      if(!open){
+        item.classList.add('open');
+        const icon = item.querySelector('.faq-question span:last-child');
+        if(icon) icon.textContent = '−';
+      }
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
