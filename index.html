@@ -3,19 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>사단법인 함께하는길</title>
+
+  <title>함께하는길 | 비영리 단체</title>
+  <meta name="description" content="함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 수행하는 비영리 단체입니다." />
+
+  <meta property="og:title" content="함께하는길 | 비영리 단체" />
+  <meta property="og:description" content="작은 나눔이 누군가의 내일을 바꿉니다." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root {
       --primary: #1f5f4a;
       --primary-dark: #163f33;
       --primary-soft: #e8f3ef;
-      --accent: #f4a340;
+      --accent: #f2a516;
       --text: #1f2933;
       --muted: #6b7280;
       --line: #e5e7eb;
       --bg: #f8faf9;
       --white: #ffffff;
+      --danger: #b45309;
       --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
       --radius: 20px;
       --max: 1180px;
@@ -36,6 +43,7 @@
       color: var(--text);
       background: var(--bg);
       line-height: 1.6;
+      word-break: keep-all;
     }
 
     a {
@@ -48,12 +56,34 @@
       display: block;
     }
 
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
     .container {
       width: min(100% - 40px, var(--max));
       margin: 0 auto;
     }
 
-    /* Header */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: #111827;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      z-index: 999;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    /* Top Bar */
     .top-bar {
       background: var(--primary-dark);
       color: rgba(255, 255, 255, 0.88);
@@ -74,17 +104,18 @@
       white-space: nowrap;
     }
 
+    /* Header */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(229, 231, 235, 0.85);
     }
 
     .nav {
-      height: 76px;
+      height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -94,34 +125,21 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
       flex-shrink: 0;
+      min-width: 210px;
     }
 
-    .logo-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary), #7bbd9d);
-      display: grid;
-      place-items: center;
-      color: white;
-      font-weight: 900;
-      box-shadow: 0 10px 25px rgba(31, 95, 74, 0.22);
+    .logo img {
+      width: 215px;
+      height: auto;
+      object-fit: contain;
     }
 
-    .logo-text strong {
-      display: block;
-      font-size: 19px;
-      letter-spacing: -0.04em;
-      color: #111827;
-    }
-
-    .logo-text span {
-      display: block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: -2px;
+    .footer-logo img {
+      width: 210px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.95;
     }
 
     .menu {
@@ -135,21 +153,22 @@
 
     .menu a {
       position: relative;
-      padding: 26px 0;
+      padding: 29px 0;
     }
 
     .menu a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: 21px;
+      bottom: 23px;
       width: 0;
       height: 2px;
       background: var(--primary);
       transition: 0.25s;
     }
 
-    .menu a:hover::after {
+    .menu a:hover::after,
+    .menu a:focus-visible::after {
       width: 100%;
     }
 
@@ -172,6 +191,7 @@
       border: 1px solid transparent;
       transition: 0.25s;
       cursor: pointer;
+      line-height: 1;
     }
 
     .btn-primary {
@@ -203,12 +223,29 @@
       cursor: pointer;
     }
 
+    .mobile-panel {
+      display: none;
+      border-top: 1px solid var(--line);
+      background: white;
+    }
+
+    .mobile-panel a {
+      display: block;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      font-weight: 800;
+    }
+
+    body.menu-open .mobile-panel {
+      display: block;
+    }
+
     /* Hero */
     .hero {
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(22, 63, 51, 0.9), rgba(22, 63, 51, 0.62)),
+        linear-gradient(90deg, rgba(22, 63, 51, 0.91), rgba(22, 63, 51, 0.62)),
         url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1800&q=80");
       background-size: cover;
       background-position: center;
@@ -249,7 +286,6 @@
       color: rgba(255, 255, 255, 0.88);
       max-width: 620px;
       margin-bottom: 32px;
-      word-break: keep-all;
     }
 
     .hero-buttons {
@@ -278,7 +314,7 @@
     }
 
     .donation-card {
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.97);
       color: var(--text);
       border-radius: 28px;
       padding: 28px;
@@ -372,7 +408,6 @@
     .center-head p {
       color: var(--muted);
       max-width: 520px;
-      word-break: keep-all;
     }
 
     .center-head {
@@ -411,7 +446,6 @@
     .about-content p {
       color: var(--muted);
       font-size: 17px;
-      word-break: keep-all;
       margin-bottom: 24px;
     }
 
@@ -549,7 +583,6 @@
     .program-body p {
       color: var(--muted);
       font-size: 15px;
-      word-break: keep-all;
       margin-bottom: 18px;
     }
 
@@ -587,7 +620,6 @@
 
     .impact-main p {
       color: rgba(255, 255, 255, 0.82);
-      word-break: keep-all;
     }
 
     .impact-list {
@@ -628,9 +660,39 @@
       font-size: 14px;
     }
 
+    /* Transparency */
+    .transparency {
+      background: #fff;
+    }
+
+    .transparency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .transparency-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .transparency-card h3 {
+      font-size: 21px;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .transparency-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     /* News */
     .news {
-      background: white;
+      background: var(--bg);
     }
 
     .news-grid {
@@ -673,7 +735,6 @@
 
     .featured-news p {
       color: rgba(255, 255, 255, 0.82);
-      word-break: keep-all;
     }
 
     .news-list {
@@ -732,12 +793,11 @@
     .donation-text p {
       color: rgba(255, 255, 255, 0.84);
       font-size: 18px;
-      word-break: keep-all;
       max-width: 600px;
     }
 
     .donation-method {
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.97);
       color: var(--text);
       border-radius: 30px;
       padding: 32px;
@@ -775,6 +835,16 @@
       color: var(--muted);
       margin-top: 14px;
       line-height: 1.5;
+    }
+
+    .notice {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 16px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      font-size: 13px;
     }
 
     /* Contact */
@@ -850,7 +920,6 @@
       border: 1px solid var(--line);
       border-radius: 14px;
       padding: 14px 15px;
-      font: inherit;
       background: #fff;
       outline: none;
       transition: 0.2s;
@@ -887,18 +956,10 @@
     }
 
     .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: white;
       margin-bottom: 16px;
     }
 
-    .footer-logo .logo-mark {
-      box-shadow: none;
-    }
-
-    .footer h4 {
+    footer h4 {
       color: white;
       margin-bottom: 14px;
       font-size: 16px;
@@ -913,7 +974,6 @@
     .footer-desc {
       font-size: 14px;
       max-width: 320px;
-      word-break: keep-all;
     }
 
     .copyright {
@@ -926,7 +986,16 @@
       flex-wrap: wrap;
     }
 
-    /* Mobile */
+    @media (max-width: 1080px) {
+      .menu {
+        gap: 20px;
+      }
+
+      .logo img {
+        width: 190px;
+      }
+    }
+
     @media (max-width: 960px) {
       .top-bar {
         display: none;
@@ -967,6 +1036,10 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .transparency-grid {
+        grid-template-columns: 1fr;
+      }
+
       .footer-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -983,11 +1056,15 @@
       }
 
       .nav {
-        height: 68px;
+        height: 70px;
       }
 
-      .logo-text strong {
-        font-size: 17px;
+      .logo {
+        min-width: auto;
+      }
+
+      .logo img {
+        width: 172px;
       }
 
       .hero h1 {
@@ -1023,36 +1100,35 @@
       .amounts {
         grid-template-columns: 1fr;
       }
+
+      .footer-logo img {
+        width: 190px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
 
-  <!-- Top Bar -->
   <div class="top-bar">
     <div class="container">
       <div>투명한 운영과 지속 가능한 나눔을 실천하는 비영리 단체</div>
       <div class="top-links">
         <a href="#contact">문의하기</a>
         <a href="#donate">후원안내</a>
-        <a href="#">자료실</a>
+        <a href="#transparency">투명경영</a>
       </div>
     </div>
   </div>
 
-  <!-- Header -->
   <header>
     <div class="container nav">
-      <a href="#" class="logo">
-        <div class="logo-mark">길</div>
-        <div class="logo-text">
-          <strong>함께하는길</strong>
-          <span>Nonprofit Organization</span>
-        </div>
+      <a href="#" class="logo" aria-label="함께하는길 홈">
+        <img src="path_of_unity_logo_design.png" alt="함께하는길 Nonprofit Organization 로고" />
       </a>
 
-      <nav class="menu">
+      <nav class="menu" aria-label="주요 메뉴">
         <a href="#about">단체소개</a>
         <a href="#programs">주요사업</a>
         <a href="#impact">활동성과</a>
@@ -1065,425 +1141,463 @@
         <a href="#donate" class="btn btn-primary">후원하기</a>
       </div>
 
-      <button class="mobile-toggle" aria-label="메뉴 열기">☰</button>
+      <button class="mobile-toggle" type="button" aria-label="모바일 메뉴 열기" onclick="document.body.classList.toggle('menu-open')">☰</button>
     </div>
+
+    <nav class="mobile-panel" aria-label="모바일 메뉴">
+      <a href="#about" onclick="document.body.classList.remove('menu-open')">단체소개</a>
+      <a href="#programs" onclick="document.body.classList.remove('menu-open')">주요사업</a>
+      <a href="#impact" onclick="document.body.classList.remove('menu-open')">활동성과</a>
+      <a href="#news" onclick="document.body.classList.remove('menu-open')">소식</a>
+      <a href="#donate" onclick="document.body.classList.remove('menu-open')">후원하기</a>
+      <a href="#contact" onclick="document.body.classList.remove('menu-open')">문의</a>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div>
-        <div class="hero-kicker">믿을 수 있는 비영리 단체 홈페이지</div>
-        <h1>
-          작은 나눔이<br />
-          누군가의 내일을<br />
-          바꿉니다
-        </h1>
-        <p>
-          함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 통해
-          모두가 존중받는 사회를 만들어갑니다.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#programs" class="btn btn-primary">주요사업 보기</a>
-          <a href="#about" class="btn btn-outline">단체소개</a>
-        </div>
-
-        <div class="hero-mini">
-          <div><strong>설립 2015</strong> · 지역사회 기반 활동</div>
-          <div><strong>투명한 후원금</strong> · 정기 보고</div>
-        </div>
-      </div>
-
-      <aside class="donation-card">
-        <h3>정기후원으로 함께해주세요</h3>
-        <p>
-          매월의 작은 후원이 아이들의 식사, 교육, 긴급 생계 지원으로 이어집니다.
-        </p>
-
-        <div class="amounts">
-          <a href="#" class="amount active">10,000원</a>
-          <a href="#" class="amount">30,000원</a>
-          <a href="#" class="amount">50,000원</a>
-          <a href="#" class="amount">직접 입력</a>
-        </div>
-
-        <a href="#donate" class="btn btn-primary">후원 신청하기</a>
-
-        <div class="trust-box">
-          <span>🔒</span>
-          <span>
-            후원금은 목적사업에 맞게 사용되며, 활동보고와 결산자료를 정기적으로 공개합니다.
-          </span>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="container about-grid">
-      <div class="about-image"></div>
-
-      <div class="about-content">
-        <span class="eyebrow">About Us</span>
-        <h2>도움이 필요한 곳에 가장 먼저 다가가는 단체</h2>
-        <p>
-          함께하는길은 지역사회 안에서 소외된 이웃을 발견하고, 실제적인 도움을 연결하는
-          비영리 단체입니다. 단순한 일회성 지원을 넘어, 삶이 회복될 수 있도록 지속적인
-          관계와 프로그램을 만들어갑니다.
-        </p>
-
-        <div class="check-list">
-          <div class="check">
-            <div class="check-icon">✓</div>
-            <div>
-              <strong>투명한 운영</strong>
-              <span>후원금 사용 내역과 사업 결과를 정기적으로 공개합니다.</span>
-            </div>
-          </div>
-
-          <div class="check">
-            <div class="check-icon">✓</div>
-            <div>
-              <strong>현장 중심 사업</strong>
-              <span>실제 필요한 곳을 직접 확인하고 가장 필요한 지원을 연결합니다.</span>
-            </div>
-          </div>
-
-          <div class="check">
-            <div class="check-icon">✓</div>
-            <div>
-              <strong>지속 가능한 변화</strong>
-              <span>긴급지원 이후에도 교육, 상담, 자립 프로그램을 이어갑니다.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="stats-band">
-    <div class="container">
-      <div class="stats-wrap">
-        <div class="stat-item">
-          <strong>12,480</strong>
-          <span>누적 지원 인원</span>
-        </div>
-        <div class="stat-item">
-          <strong>186</strong>
-          <span>진행한 프로젝트</span>
-        </div>
-        <div class="stat-item">
-          <strong>42</strong>
-          <span>협력 기관</span>
-        </div>
-        <div class="stat-item">
-          <strong>98%</strong>
-          <span>후원자 만족도</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programs -->
-  <section id="programs" class="programs">
-    <div class="container">
-      <div class="section-head">
+  <main id="main">
+    <section class="hero">
+      <div class="container">
         <div>
-          <span class="eyebrow">Our Programs</span>
-          <h2>주요사업</h2>
-        </div>
-        <p>
-          함께하는길은 교육, 돌봄, 긴급지원의 세 영역을 중심으로
-          지역사회에 필요한 실제적인 도움을 제공합니다.
-        </p>
-      </div>
-
-      <div class="program-grid">
-        <article class="program-card">
-          <div class="program-thumb thumb-1"></div>
-          <div class="program-body">
-            <span class="label">교육지원</span>
-            <h3>아동·청소년 배움 지원</h3>
-            <p>
-              학습 멘토링, 장학금, 진로 상담을 통해 아이들이 자신의 가능성을 발견하도록 돕습니다.
-            </p>
-            <a href="#" class="read-more">자세히 보기 →</a>
-          </div>
-        </article>
-
-        <article class="program-card">
-          <div class="program-thumb thumb-2"></div>
-          <div class="program-body">
-            <span class="label">돌봄사업</span>
-            <h3>취약계층 생활 돌봄</h3>
-            <p>
-              독거 어르신, 한부모 가정, 장애인 가정에 식료품과 생활 지원을 제공합니다.
-            </p>
-            <a href="#" class="read-more">자세히 보기 →</a>
-          </div>
-        </article>
-
-        <article class="program-card">
-          <div class="program-thumb thumb-3"></div>
-          <div class="program-body">
-            <span class="label">긴급지원</span>
-            <h3>위기 가정 긴급 구호</h3>
-            <p>
-              갑작스러운 질병, 실직, 재난 상황에 놓인 가정에 긴급 생계비와 물품을 지원합니다.
-            </p>
-            <a href="#" class="read-more">자세히 보기 →</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Impact -->
-  <section id="impact">
-    <div class="container">
-      <div class="center-head">
-        <span class="eyebrow">Impact</span>
-        <h2>후원은 실제 변화로 이어집니다</h2>
-        <p>
-          우리는 숫자보다 사람을 먼저 봅니다. 하지만 투명한 보고를 위해
-          모든 사업의 결과를 기록하고 공유합니다.
-        </p>
-      </div>
-
-      <div class="impact-grid">
-        <div class="impact-main">
-          <div>
-            <h3>지난 한 해, 3,200명의 이웃에게 도움을 전했습니다.</h3>
-            <p>
-              후원자와 봉사자의 참여로 식료품 지원, 교육비 지원, 심리 상담,
-              주거 환경 개선 사업을 진행했습니다.
-            </p>
-          </div>
-          <a href="#" class="btn btn-outline">연간보고서 보기</a>
-        </div>
-
-        <div class="impact-list">
-          <div class="impact-item">
-            <div class="impact-number">01</div>
-            <div>
-              <h4>아동 교육비 지원</h4>
-              <p>경제적 어려움으로 학습이 중단되지 않도록 장학금과 교재를 지원했습니다.</p>
-            </div>
-          </div>
-
-          <div class="impact-item">
-            <div class="impact-number">02</div>
-            <div>
-              <h4>긴급 생계 지원</h4>
-              <p>위기 상황에 놓인 가정에 식료품, 의료비, 생활비를 신속히 연결했습니다.</p>
-            </div>
-          </div>
-
-          <div class="impact-item">
-            <div class="impact-number">03</div>
-            <div>
-              <h4>지역 봉사 네트워크</h4>
-              <p>자원봉사자와 협력기관을 연결하여 지속 가능한 돌봄 체계를 구축했습니다.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- News -->
-  <section id="news" class="news">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">News</span>
-          <h2>활동소식</h2>
-        </div>
-        <a href="#" class="btn btn-outline">전체 소식 보기</a>
-      </div>
-
-      <div class="news-grid">
-        <article class="featured-news">
-          <div>
-            <div class="date">2026.05.10</div>
-            <h3>가정의 달 맞이 지역 아동 식료품 키트 전달</h3>
-            <p>
-              후원자님의 참여로 지역 아동 150명에게 건강한 식료품 키트와 응원 메시지를 전달했습니다.
-            </p>
-          </div>
-        </article>
-
-        <div class="news-list">
-          <article class="news-item">
-            <div class="date">2026.04.28</div>
-            <h4>상반기 정기후원자 감사 편지 발송</h4>
-            <p>함께해주신 후원자님께 사업 결과와 감사 인사를 전했습니다.</p>
-          </article>
-
-          <article class="news-item">
-            <div class="date">2026.04.15</div>
-            <h4>청소년 진로 멘토링 2기 모집</h4>
-            <p>지역 청소년을 위한 진로 상담 및 학습 멘토링 프로그램을 시작합니다.</p>
-          </article>
-
-          <article class="news-item">
-            <div class="date">2026.03.30</div>
-            <h4>취약계층 주거환경 개선 봉사 진행</h4>
-            <p>자원봉사자 34명이 참여해 노후 주거지 정비 활동을 진행했습니다.</p>
-          </article>
-
-          <article class="news-item">
-            <div class="date">2026.03.12</div>
-            <h4>2025 연간 기부금 사용 보고 공개</h4>
-            <p>지난해 후원금 사용 내역과 사업 성과를 투명하게 공개합니다.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Donation -->
-  <section id="donate" class="donation-section">
-    <div class="container donation-box">
-      <div class="donation-text">
-        <span class="eyebrow" style="color:#f9d494;">Donation</span>
-        <h2>당신의 후원이<br />한 사람의 삶을 지킵니다</h2>
-        <p>
-          후원금은 교육, 생계, 의료, 주거 지원 등 목적사업에 맞게 사용됩니다.
-          함께하는길은 모든 후원금의 사용 내역을 정직하게 기록하고 보고합니다.
-        </p>
-      </div>
-
-      <div class="donation-method">
-        <h3>후원 계좌 안내</h3>
-
-        <div class="bank-box">
-          <span>은행명</span>
-          <strong>국민은행</strong>
-        </div>
-
-        <div class="bank-box">
-          <span>계좌번호</span>
-          <strong>000000-00-000000</strong>
-        </div>
-
-        <div class="bank-box">
-          <span>예금주</span>
-          <strong>사단법인 함께하는길</strong>
-        </div>
-
-        <a href="#contact" class="btn btn-primary">후원 문의하기</a>
-
-        <small>
-          기부금 영수증 발급이 필요하신 경우 문의 양식에 성함, 연락처, 발급 정보를 남겨주세요.
-        </small>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <div class="center-head">
-        <span class="eyebrow">Contact</span>
-        <h2>문의하기</h2>
-        <p>
-          후원, 봉사, 협력 제안, 사업 문의를 남겨주시면 담당자가 확인 후 연락드립니다.
-        </p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>함께하는길 사무국</h3>
-          <p style="color: var(--muted); word-break: keep-all;">
-            도움이 필요한 곳과 도움을 주고 싶은 사람을 연결합니다.
-            궁금한 점이 있다면 언제든 문의해주세요.
+          <div class="hero-kicker">지역사회와 함께 걷는 비영리 단체</div>
+          <h1>
+            작은 나눔이<br />
+            누군가의 내일을<br />
+            바꿉니다
+          </h1>
+          <p>
+            함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 통해
+            모두가 존중받는 사회를 만들어갑니다.
           </p>
 
-          <div class="info-list">
-            <div class="info-row">
-              <span>📍</span>
+          <div class="hero-buttons">
+            <a href="#programs" class="btn btn-primary">주요사업 보기</a>
+            <a href="#about" class="btn btn-outline">단체소개</a>
+          </div>
+
+          <div class="hero-mini">
+            <div><strong>설립 2015</strong> · 지역사회 기반 활동</div>
+            <div><strong>투명한 후원금</strong> · 정기 보고</div>
+          </div>
+        </div>
+
+        <aside class="donation-card" aria-label="정기후원 안내">
+          <h3>정기후원으로 함께해주세요</h3>
+          <p>
+            매월의 작은 후원이 아이들의 식사, 교육, 긴급 생계 지원으로 이어집니다.
+          </p>
+
+          <div class="amounts">
+            <a href="#donate" class="amount active">10,000원</a>
+            <a href="#donate" class="amount">30,000원</a>
+            <a href="#donate" class="amount">50,000원</a>
+            <a href="#donate" class="amount">직접 입력</a>
+          </div>
+
+          <a href="#donate" class="btn btn-primary">후원 신청하기</a>
+
+          <div class="trust-box">
+            <span>🔒</span>
+            <span>
+              후원금은 목적사업에 맞게 사용되며, 활동보고와 결산자료를 정기적으로 공개합니다.
+            </span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-image" role="img" aria-label="봉사자와 이웃이 함께하는 모습"></div>
+
+        <div class="about-content">
+          <span class="eyebrow">About Us</span>
+          <h2>도움이 필요한 곳에 가장 먼저 다가가는 단체</h2>
+          <p>
+            함께하는길은 지역사회 안에서 소외된 이웃을 발견하고, 실제적인 도움을 연결하는
+            비영리 단체입니다. 단순한 일회성 지원을 넘어, 삶이 회복될 수 있도록 지속적인
+            관계와 프로그램을 만들어갑니다.
+          </p>
+
+          <div class="check-list">
+            <div class="check">
+              <div class="check-icon">✓</div>
               <div>
-                <strong>주소</strong>
-                서울특별시 중구 세종대로 00, 5층
+                <strong>투명한 운영</strong>
+                <span>후원금 사용 내역과 사업 결과를 정기적으로 공개합니다.</span>
               </div>
             </div>
 
-            <div class="info-row">
-              <span>📞</span>
+            <div class="check">
+              <div class="check-icon">✓</div>
               <div>
-                <strong>전화</strong>
-                02-0000-0000
+                <strong>현장 중심 사업</strong>
+                <span>실제 필요한 곳을 직접 확인하고 가장 필요한 지원을 연결합니다.</span>
               </div>
             </div>
 
-            <div class="info-row">
-              <span>✉️</span>
+            <div class="check">
+              <div class="check-icon">✓</div>
               <div>
-                <strong>이메일</strong>
-                hello@togetherway.org
-              </div>
-            </div>
-
-            <div class="info-row">
-              <span>🕘</span>
-              <div>
-                <strong>운영시간</strong>
-                평일 09:00 - 18:00
+                <strong>지속 가능한 변화</strong>
+                <span>긴급지원 이후에도 교육, 상담, 자립 프로그램을 이어갑니다.</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <form class="form">
-          <div class="form-grid">
-            <div class="field">
-              <label for="name">이름</label>
-              <input id="name" type="text" placeholder="홍길동" />
+    <section class="stats-band" aria-label="활동 통계">
+      <div class="container">
+        <div class="stats-wrap">
+          <div class="stat-item">
+            <strong>12,480</strong>
+            <span>누적 지원 인원</span>
+          </div>
+          <div class="stat-item">
+            <strong>186</strong>
+            <span>진행한 프로젝트</span>
+          </div>
+          <div class="stat-item">
+            <strong>42</strong>
+            <span>협력 기관</span>
+          </div>
+          <div class="stat-item">
+            <strong>98%</strong>
+            <span>후원자 만족도</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="programs">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Our Programs</span>
+            <h2>주요사업</h2>
+          </div>
+          <p>
+            함께하는길은 교육, 돌봄, 긴급지원의 세 영역을 중심으로
+            지역사회에 필요한 실제적인 도움을 제공합니다.
+          </p>
+        </div>
+
+        <div class="program-grid">
+          <article class="program-card">
+            <div class="program-thumb thumb-1"></div>
+            <div class="program-body">
+              <span class="label">교육지원</span>
+              <h3>아동·청소년 배움 지원</h3>
+              <p>
+                학습 멘토링, 장학금, 진로 상담을 통해 아이들이 자신의 가능성을 발견하도록 돕습니다.
+              </p>
+              <a href="#contact" class="read-more">문의하기 →</a>
+            </div>
+          </article>
+
+          <article class="program-card">
+            <div class="program-thumb thumb-2"></div>
+            <div class="program-body">
+              <span class="label">돌봄사업</span>
+              <h3>취약계층 생활 돌봄</h3>
+              <p>
+                독거 어르신, 한부모 가정, 장애인 가정에 식료품과 생활 지원을 제공합니다.
+              </p>
+              <a href="#contact" class="read-more">문의하기 →</a>
+            </div>
+          </article>
+
+          <article class="program-card">
+            <div class="program-thumb thumb-3"></div>
+            <div class="program-body">
+              <span class="label">긴급지원</span>
+              <h3>위기 가정 긴급 구호</h3>
+              <p>
+                갑작스러운 질병, 실직, 재난 상황에 놓인 가정에 긴급 생계비와 물품을 지원합니다.
+              </p>
+              <a href="#contact" class="read-more">문의하기 →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow">Impact</span>
+          <h2>후원은 실제 변화로 이어집니다</h2>
+          <p>
+            우리는 숫자보다 사람을 먼저 봅니다. 하지만 투명한 보고를 위해
+            모든 사업의 결과를 기록하고 공유합니다.
+          </p>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-main">
+            <div>
+              <h3>지난 한 해, 3,200명의 이웃에게 도움을 전했습니다.</h3>
+              <p>
+                후원자와 봉사자의 참여로 식료품 지원, 교육비 지원, 심리 상담,
+                주거 환경 개선 사업을 진행했습니다.
+              </p>
+            </div>
+            <a href="#transparency" class="btn btn-outline">운영 원칙 보기</a>
+          </div>
+
+          <div class="impact-list">
+            <div class="impact-item">
+              <div class="impact-number">01</div>
+              <div>
+                <h4>아동 교육비 지원</h4>
+                <p>경제적 어려움으로 학습이 중단되지 않도록 장학금과 교재를 지원했습니다.</p>
+              </div>
             </div>
 
-            <div class="field">
-              <label for="phone">연락처</label>
-              <input id="phone" type="tel" placeholder="010-0000-0000" />
+            <div class="impact-item">
+              <div class="impact-number">02</div>
+              <div>
+                <h4>긴급 생계 지원</h4>
+                <p>위기 상황에 놓인 가정에 식료품, 의료비, 생활비를 신속히 연결했습니다.</p>
+              </div>
             </div>
 
-            <div class="field full">
-              <label for="type">문의 유형</label>
-              <select id="type">
-                <option>후원 문의</option>
-                <option>봉사 신청</option>
-                <option>사업 협력</option>
-                <option>기타 문의</option>
-              </select>
-            </div>
-
-            <div class="field full">
-              <label for="message">문의 내용</label>
-              <textarea id="message" placeholder="문의 내용을 입력해주세요."></textarea>
-            </div>
-
-            <div class="field full">
-              <button type="button" class="btn btn-primary" style="width: 100%;">
-                문의 남기기
-              </button>
+            <div class="impact-item">
+              <div class="impact-number">03</div>
+              <div>
+                <h4>지역 봉사 네트워크</h4>
+                <p>자원봉사자와 협력기관을 연결하여 지속 가능한 돌봄 체계를 구축했습니다.</p>
+              </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
+    <section id="transparency" class="transparency">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Transparency</span>
+            <h2>투명한 운영 원칙</h2>
+          </div>
+          <p>
+            비영리 단체 홈페이지에서는 예쁜 디자인만큼 신뢰 정보가 중요합니다.
+            후원자가 안심할 수 있도록 운영 기준을 명확히 보여줍니다.
+          </p>
+        </div>
+
+        <div class="transparency-grid">
+          <div class="transparency-card">
+            <h3>후원금 사용 보고</h3>
+            <p>사업별 사용 내역과 결과를 정기적으로 정리해 공개합니다.</p>
+          </div>
+          <div class="transparency-card">
+            <h3>기부금 영수증 안내</h3>
+            <p>후원자 요청 시 기부금 영수증 발급 절차를 안내합니다.</p>
+          </div>
+          <div class="transparency-card">
+            <h3>개인정보 보호</h3>
+            <p>문의 및 후원 과정에서 수집된 정보는 목적 외로 사용하지 않습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="news">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">News</span>
+            <h2>활동소식</h2>
+          </div>
+          <a href="#contact" class="btn btn-outline">소식 제보/문의</a>
+        </div>
+
+        <div class="news-grid">
+          <article class="featured-news">
+            <div>
+              <div class="date">2026.05.10</div>
+              <h3>가정의 달 맞이 지역 아동 식료품 키트 전달</h3>
+              <p>
+                후원자님의 참여로 지역 아동 150명에게 건강한 식료품 키트와 응원 메시지를 전달했습니다.
+              </p>
+            </div>
+          </article>
+
+          <div class="news-list">
+            <article class="news-item">
+              <div class="date">2026.04.28</div>
+              <h4>상반기 정기후원자 감사 편지 발송</h4>
+              <p>함께해주신 후원자님께 사업 결과와 감사 인사를 전했습니다.</p>
+            </article>
+
+            <article class="news-item">
+              <div class="date">2026.04.15</div>
+              <h4>청소년 진로 멘토링 2기 모집</h4>
+              <p>지역 청소년을 위한 진로 상담 및 학습 멘토링 프로그램을 시작합니다.</p>
+            </article>
+
+            <article class="news-item">
+              <div class="date">2026.03.30</div>
+              <h4>취약계층 주거환경 개선 봉사 진행</h4>
+              <p>자원봉사자 34명이 참여해 노후 주거지 정비 활동을 진행했습니다.</p>
+            </article>
+
+            <article class="news-item">
+              <div class="date">2026.03.12</div>
+              <h4>2025 연간 기부금 사용 보고 공개</h4>
+              <p>지난해 후원금 사용 내역과 사업 성과를 투명하게 공개합니다.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate" class="donation-section">
+      <div class="container donation-box">
+        <div class="donation-text">
+          <span class="eyebrow" style="color:#f9d494;">Donation</span>
+          <h2>당신의 후원이<br />한 사람의 삶을 지킵니다</h2>
+          <p>
+            후원금은 교육, 생계, 의료, 주거 지원 등 목적사업에 맞게 사용됩니다.
+            함께하는길은 모든 후원금의 사용 내역을 정직하게 기록하고 보고합니다.
+          </p>
+        </div>
+
+        <div class="donation-method">
+          <h3>후원 계좌 안내</h3>
+
+          <div class="bank-box">
+            <span>은행명</span>
+            <strong>국민은행</strong>
+          </div>
+
+          <div class="bank-box">
+            <span>계좌번호</span>
+            <strong>000000-00-000000</strong>
+          </div>
+
+          <div class="bank-box">
+            <span>예금주</span>
+            <strong>사단법인 함께하는길</strong>
+          </div>
+
+          <a href="#contact" class="btn btn-primary">후원 문의하기</a>
+
+          <div class="notice">
+            실제 운영 시에는 사업자/고유번호, 기부금 단체 여부, 영수증 발급 가능 여부를 반드시 확인해 표기해야 합니다.
+          </div>
+
+          <small>
+            기부금 영수증 발급이 필요하신 경우 문의 양식에 성함, 연락처, 발급 정보를 남겨주세요.
+          </small>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow">Contact</span>
+          <h2>문의하기</h2>
+          <p>
+            후원, 봉사, 협력 제안, 사업 문의를 남겨주시면 담당자가 확인 후 연락드립니다.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>함께하는길 사무국</h3>
+            <p style="color: var(--muted);">
+              도움이 필요한 곳과 도움을 주고 싶은 사람을 연결합니다.
+              궁금한 점이 있다면 언제든 문의해주세요.
+            </p>
+
+            <div class="info-list">
+              <div class="info-row">
+                <span>📍</span>
+                <div>
+                  <strong>주소</strong>
+                  서울특별시 중구 세종대로 00, 5층
+                </div>
+              </div>
+
+              <div class="info-row">
+                <span>📞</span>
+                <div>
+                  <strong>전화</strong>
+                  02-0000-0000
+                </div>
+              </div>
+
+              <div class="info-row">
+                <span>✉️</span>
+                <div>
+                  <strong>이메일</strong>
+                  hello@togetherway.org
+                </div>
+              </div>
+
+              <div class="info-row">
+                <span>🕘</span>
+                <div>
+                  <strong>운영시간</strong>
+                  평일 09:00 - 18:00
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="form" onsubmit="event.preventDefault(); alert('샘플 페이지입니다. 실제 운영 시 폼 전송 기능을 연결해야 합니다.');">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">이름</label>
+                <input id="name" type="text" placeholder="홍길동" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">연락처</label>
+                <input id="phone" type="tel" placeholder="010-0000-0000" required />
+              </div>
+
+              <div class="field full">
+                <label for="type">문의 유형</label>
+                <select id="type">
+                  <option>후원 문의</option>
+                  <option>봉사 신청</option>
+                  <option>사업 협력</option>
+                  <option>기타 문의</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="message">문의 내용</label>
+                <textarea id="message" placeholder="문의 내용을 입력해주세요." required></textarea>
+              </div>
+
+              <div class="field full">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  문의 남기기
+                </button>
+                <p style="margin-top: 10px; color: var(--muted); font-size: 13px;">
+                  현재는 샘플 폼입니다. 실제 배포 시 Google Forms, Formspree, Supabase, Firebase 등으로 연결하세요.
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <div class="logo-mark">길</div>
-            <strong>함께하는길</strong>
+            <img src="path_of_unity_logo_design.png" alt="함께하는길 로고" />
           </div>
           <p class="footer-desc">
             함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 수행하는 비영리 단체입니다.
@@ -1496,7 +1610,7 @@
             <a href="#about">인사말</a>
             <a href="#about">비전과 미션</a>
             <a href="#impact">활동성과</a>
-            <a href="#">연혁</a>
+            <a href="#transparency">투명경영</a>
           </div>
         </div>
 
@@ -1527,6 +1641,5 @@
       </div>
     </div>
   </footer>
-
 </body>
 </html>
