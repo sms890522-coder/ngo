@@ -138,8 +138,9 @@
     .footer-logo img {
       width: 210px;
       height: auto;
-      filter: brightness(0) invert(1);
-      opacity: 0.95;
+      filter: none;
+      opacity: 1;
+      mix-blend-mode: normal;
     }
 
     .menu {
@@ -147,8 +148,8 @@
       align-items: center;
       gap: 30px;
       font-size: 15px;
-      font-weight: 700;
-      color: #374151;
+      font-weight: 800;
+      color: var(--primary);
     }
 
     .menu a {
@@ -170,6 +171,11 @@
     .menu a:hover::after,
     .menu a:focus-visible::after {
       width: 100%;
+    }
+
+    .menu a:hover,
+    .menu a:focus-visible {
+      color: var(--primary-dark);
     }
 
     .nav-actions {
@@ -956,7 +962,14 @@
     }
 
     .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
       margin-bottom: 16px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     footer h4 {
@@ -1104,6 +1117,11 @@
       .footer-logo img {
         width: 190px;
       }
+
+      .footer-logo {
+        padding: 0;
+        border-radius: 0;
+      }
     }
   </style>
 </head>
@@ -1125,7 +1143,7 @@
   <header>
     <div class="container nav">
       <a href="#" class="logo" aria-label="함께하는길 홈">
-        <img src="path_of_unity_logo_design.png" alt="함께하는길 Nonprofit Organization 로고" />
+        <img src="path_of_unity_logo_transparent.png" alt="함께하는길 Nonprofit Organization 로고" />
       </a>
 
       <nav class="menu" aria-label="주요 메뉴">
@@ -1597,7 +1615,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <img src="path_of_unity_logo_design.png" alt="함께하는길 로고" />
+            <img src="path_of_unity_logo_transparent.png" alt="함께하는길 로고" />
           </div>
           <p class="footer-desc">
             함께하는길은 지역사회와 취약계층을 위한 교육, 돌봄, 긴급지원 사업을 수행하는 비영리 단체입니다.
